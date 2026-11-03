@@ -1,0 +1,13 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c=vm.createContext({Math,params:{W:600,L:650,D:200,T:490}});
+for(const f of['mechanism','upper-body','arm-analysis','battery-design'])vm.runInContext(fs.readFileSync(`dist/${f}.js`,'utf8'),c);
+vm.runInContext('function coordinates(){return{drive:{positions:[[0,245,100],[0,-245,100]]},caster:{positions:[[235,220,37.5],[235,-220,37.5]]},rear:{positions:[[-255,0,32.5]]}}}',c);
+const run=s=>vm.runInContext(s,c),near=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} / ${b}`);
+assert.ok(run('batteryCenters()[0][1]')>0,'observed pack must be at robot-left +Y');near(run('baseMassProperties().mass'),76);near(run('baseMassProperties().cg[1]'),0);near(run('massAnalysis().total'),135);assert.ok(run('batteryClearances().every(c=>c.value>=c.required)'));
+const original=run('JSON.stringify(baseMassProperties())');run('batteryDesign.lift=300');assert.equal(run('JSON.stringify(baseMassProperties())'),original,'geometry-only extraction preview must not alter load model');
+run('batteryDesign.installed[0]=false');near(run('baseMassProperties().mass'),72);near(run('massAnalysis().total'),131);near(run('massAnalysis().cg[1]'),-4*165/131);
+run('batteryDesign.installed[1]=false');near(run('baseMassProperties().mass'),68);near(run('baseMassProperties().cg[1]'),0);
+run('batteryDesign.installed=[true,true];batteryDesign.massEach=6');near(run('baseMassProperties().mass'),76);near(run('baseMassProperties().residual'),64);
+run('params.D=240');assert.ok(run('batteryClearances().find(c=>c.name.includes("모터")).value')<0,'large motor reservation must expose tray interference');
+run('params.D=200;params.T=420');assert.ok(run('batteryClearances()[0].value')<0,'narrow track must expose side bay interference');
+console.log('PASS: robot-left placement; installed/removed mass and CG; fixed full-base mass budget; lift preview invariance; motor/track gap failures.');

@@ -1,0 +1,568 @@
+{
+  "revision": "I",
+  "review_date": "2026-10-29",
+  "units": "mm, kg, degree, N*m",
+  "scope": "five-wheel AMR, 5-DoF waist, torso, bilateral 7R arms, 2-DoF neck/head and candidate 20-axis hybrid hands; preliminary detailed geometry, kinematics and static waist/arm gravity loads, hand payload distribution and sampled kinematic workspace; hybrid hand candidate mechanisms and single-finger hydraulic/static design review",
+  "sources": [
+    {
+      "url": "https://holiday-robotics.com/product",
+      "kind": "official current product page",
+      "facts": {
+        "height_mm": 1760,
+        "total_mass_kg": 125,
+        "total_dof": 64,
+        "max_speed_m_s": 1.9
+      },
+      "note": "No current waist-axis topology or module mass was independently published here."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=iUNat-40BeM",
+      "kind": "official introduction, published 2025-10-29; description read directly in browser",
+      "facts": {
+        "historical_total_mass_kg": 115,
+        "historical_base_mass_kg": 66,
+        "historical_waist_mass_kg": 24,
+        "waist_dof": 5,
+        "base_dof": 2,
+        "arm_dof_each": 7,
+        "head_dof": 2,
+        "hand_dof_each": 20,
+        "historical_total_dof": 63
+      },
+      "note": "Video stream did not load in verification browser. No newly observed motion-frame analysis claimed."
+    },
+    {
+      "url": "https://public.hday.io/site/robots/friday.webp",
+      "kind": "official front photo; bundled unchanged",
+      "observations": [
+        "black U-shaped lower support",
+        "long lower column",
+        "middle rounded joint exterior",
+        "forked upper exterior",
+        "chest proportions and shoulder positions",
+        "rounded black front face and green marks",
+        "bilateral articulated arms and five-finger hand silhouette"
+      ]
+    },
+    {
+      "asset": "dist/assets/friday-base-internal-original.png",
+      "kind": "user-provided public-video frame",
+      "observations": [
+        "machined rib/pocket frame",
+        "two exposed coil spring modules with black caps",
+        "14S4P battery and silver retaining bracket",
+        "large central cylinder and side plates"
+      ],
+      "limitations": [
+        "hidden wheels not visible",
+        "exact axes and bearing models not established"
+      ]
+    },
+    {
+      "asset": "dist/assets/friday-waist-mass-reference.png",
+      "library_file_id": "libfile_60bd584e3ea8819199d66110d9d725ea",
+      "kind": "user-provided initial official video still; unchanged copy",
+      "observations": [
+        "waist 24 kg label",
+        "115 kg historical version",
+        "three-quarter lower-body exterior"
+      ]
+    },
+    {
+      "url": "https://public.hday.io/site/hero/product.mp4",
+      "kind": "manufacturer original MP4 from official product video source; playable and downloaded through native browser media API",
+      "observed_times_seconds": [
+        60.4,
+        62
+      ],
+      "observations": [
+        "base forward optical windows and near drive wheel establish robot-left side view",
+        "battery in left drive-wheel-side bay",
+        "hinged pull handle",
+        "vertical upward removal"
+      ],
+      "assets": [
+        "dist/assets/friday-battery-official-60s.png",
+        "dist/assets/friday-battery-official-62s.png"
+      ],
+      "limitations": [
+        "dimensions and second bay placement not measured",
+        "different revision from internal black pack remains possible"
+      ]
+    },
+    {
+      "url": "https://kr.linkedin.com/company/holiday-robotics",
+      "kind": "manufacturer official account, retrieved 2026-10-29",
+      "facts": [
+        "two battery packs, one keeps operating during replacement of the other",
+        "two face dots show charge of the two packs, red below 20%",
+        "hand forces generated in torso and transmitted to fingers through fluid"
+      ],
+      "limitations": [
+        "not a full electrical schematic",
+        "pump/valve versus independent master-cylinder architecture not specified"
+      ]
+    },
+    {
+      "url": "https://holiday-robotics.com/blog/hands-we-left-behind",
+      "published": "2026-10-16",
+      "kind": "official technical article; complete published Markdown read from publicly served site bundle because HTML shell omitted article body",
+      "retrieval_asset": "https://holiday-robotics.com/assets/index-BwnYUIRz.js",
+      "source_markdown_sha256": "dad43e550d14045ab2d3d7f918bcf1f97129ee720108678e2f9a85957d8e272c",
+      "facts": [
+        "hydraulic flexion with passive spring return",
+        "palm-mounted small motors for bidirectional spreading/adduction",
+        "small cylinders on dorsal side preserve inner finger and palm tactile surfaces"
+      ],
+      "assets": [
+        "dist/assets/friday-hand-cylinder.jpg",
+        "dist/assets/friday-hand-hybrid-principle.png",
+        "dist/assets/friday-hand-generations.jpg"
+      ],
+      "limitations": [
+        "dimensions not inferred from a ballpoint pen",
+        "generation photos do not prove identical revisions",
+        "full circuit and axis allocation unpublished"
+      ]
+    },
+    {
+      "url": "https://studios.disneyresearch.com/wp-content/uploads/2016/05/A-Hybrid-Hydrostatic-Transmission-and-Human-Safe-Haptic-Telepresence-Robot-1.pdf",
+      "kind": "primary remote hydrostatic transmission reference, not a description of FRIDAY",
+      "used_for": "direct fluid coupling between remote drive and joint; consideration of sealing friction and fluid damping",
+      "not_adopted": "the paper hybrid air/water N+1 topology is not assigned to FRIDAY"
+    },
+    {
+      "url": "https://holiday-robotics.com/privacy-robot",
+      "kind": "manufacturer official robot privacy policy, retrieved 2026-10-29",
+      "facts": {
+        "camera_systems": 8,
+        "head_mono": 2,
+        "shoulder_mono": 4,
+        "chest_stereo": 1,
+        "mobile_stereo": 1
+      },
+      "limitations": [
+        "external optical window to system mapping unknown",
+        "no calibrated optical extrinsics or FOV given"
+      ]
+    },
+    {
+      "url": "https://us.misumi-ec.com/pdf/fa/2010/p2071.pdf",
+      "kind": "manufacturer compression-spring technical guidance, not a selected suspension spring",
+      "used_for": [
+        "linear load-deflection terminology",
+        "allowable deflection must be checked separately from solid length"
+      ],
+      "limits": "no specific part, allowable shear or fatigue life selected"
+    }
+  ],
+  "adopted_design": {
+    "wheel_count": 5,
+    "wheel_layout": "2 central drive + 2 front sprung caster + 1 rear central caster",
+    "waist_axes": [
+      "J5 base yaw Z (belt candidate)",
+      "J1 local pitch Y",
+      "J2 local pitch Y",
+      "J3 local pitch Y",
+      "J4 local roll X"
+    ],
+    "axis_order_status": "Rev K photo-based lower-yaw hypothesis; legacy upper-yaw comparison retained; actual topology not confirmed",
+    "root_z_mm": 340,
+    "lower_link_mm": 360,
+    "upper_link_mm": 300,
+    "upper_offsets_mm": [
+      55,
+      65,
+      25
+    ],
+    "default_joint_angles_deg": [
+      -5,
+      12,
+      -7,
+      0,
+      0
+    ],
+    "analysis_mass_split_kg": {
+      "base": 76,
+      "waist": 24,
+      "upper": 25,
+      "payload": 10
+    },
+    "mass_split_status": "analysis assumptions; not a measured current module breakdown",
+    "battery_label": {
+      "series": 14,
+      "parallel": 4,
+      "total_cells": 56,
+      "chemistry": null,
+      "capacity_Ah": null
+    },
+    "manufacturing_status": "materials, thicknesses, bolt patterns, bearing and brake spaces are preliminary proposals",
+    "upper_body": {
+      "arm_axes_each": [
+        "local Y",
+        "local X",
+        "local Z",
+        "local Y",
+        "local Z",
+        "local Y",
+        "local X"
+      ],
+      "arm_segments_mm": [
+        235,
+        50,
+        190,
+        30,
+        35
+      ],
+      "shoulder_offset_from_waist_mm": [
+        0,
+        205,
+        330
+      ],
+      "neck_offset_from_waist_mm": [
+        0,
+        0,
+        405
+      ],
+      "head_axes": [
+        "local Z yaw",
+        "local Y pitch"
+      ],
+      "head_dimensions_xyz_mm": [
+        132,
+        160,
+        210
+      ],
+      "straight_body_height_mm": 1760,
+      "upper_mass_fractions": {
+        "torso": 0.432,
+        "head": 0.088,
+        "each_arm": 0.22,
+        "each_hand": 0.02
+      },
+      "hand_model": "shared bilateral 20-angle candidate; hydraulic flexion, spring return, electric palm spread; selected-finger statics",
+      "status": "photo-informed design proposal; axis order, masses, lengths, housing, electronics and internal routing unconfirmed"
+    },
+    "payload_model": {
+      "default_mode": "hands",
+      "total_mass_kg": 10,
+      "default_left_share": 0.5,
+      "tool_frame_offset_mm": [
+        0,
+        0,
+        -80
+      ],
+      "alternative_mode": "waist-relative equivalent point at X reach / Z +150 mm; excluded from arm torque",
+      "sharing_status": "user-assumed force sharing; no closed-chain rigid object equilibrium solver"
+    },
+    "actuator_review": {
+      "factor": 1.5,
+      "efficiency": 0.75,
+      "ratios": [
+        80,
+        80,
+        60,
+        80,
+        60,
+        50,
+        50
+      ],
+      "output_envelopes_diameter_length_mm": [
+        [
+          94,
+          86
+        ],
+        [
+          76,
+          70
+        ],
+        [
+          72,
+          50
+        ],
+        [
+          88,
+          74
+        ],
+        [
+          64,
+          40
+        ],
+        [
+          62,
+          58
+        ],
+        [
+          52,
+          50
+        ]
+      ],
+      "mass_fractions_within_each_arm": [
+        0.16,
+        0.14,
+        0.25,
+        0.15,
+        0.2,
+        0.06,
+        0.04
+      ],
+      "conversion": "abs(gravity torque) * factor / (ratio * efficiency)",
+      "status": "geometric reservations and assumed ratio/efficiency; not selected parts or certified ratings"
+    },
+    "workspace_review": {
+      "samples_per_arm": 480,
+      "method": "deterministic Halton angle samples within proposed limits; fixed waist posture",
+      "collision_filtered": false,
+      "singularity_filtered": false,
+      "payload_filtered": false
+    },
+    "battery_packaging": {
+      "previous_location": "rear center withdrawn",
+      "observed_bay": "robot left +Y above drive-wheel region",
+      "candidate_center_mm": [
+        -70,
+        165,
+        240
+      ],
+      "candidate_size_xyz_mm": [
+        230,
+        80,
+        150
+      ],
+      "extraction_axis": "+Z",
+      "second_pack_count_official": true,
+      "second_bay_position": "right mirror -Y assumption, rendered translucent",
+      "mass_each_kg": 4,
+      "base_mass_includes_two_packs": true,
+      "lift_preview_affects_mass": false,
+      "original_internal_14S4P_applies_to_both_current_packs": false
+    },
+    "hydraulic_hand_architecture": {
+      "official": "hydraulic flexion, spring extension, palm motors for spread/adduction; torso force generation and dorsal miniature cylinders",
+      "proposal": "14H+6E allocation, dorsal cylinder/crank pin geometry, torsion springs and motor/screw/master-cylinder displacement modules",
+      "unknown": [
+        "detailed circuit",
+        "pressure",
+        "fluid",
+        "master actuator count",
+        "pump/valve topology",
+        "hose diameter",
+        "end actuators"
+      ]
+    },
+    "hand_detail": {
+      "status": "photo-informed candidate mechanism; not released manufacturer CAD",
+      "shared_hand_q_count": 20,
+      "candidate_allocation": {
+        "hydraulic_flexion": 14,
+        "electric_palm": 6
+      },
+      "allocation_confirmed_by_manufacturer": false,
+      "index_phalanges_mm": [
+        38,
+        25,
+        18
+      ],
+      "bores_mm": [
+        6,
+        5.5,
+        4
+      ],
+      "case_outer_diameter_mm": [
+        9,
+        8,
+        7
+      ],
+      "stroke_reservations_mm": [
+        12,
+        10,
+        7
+      ],
+      "rod_mm": 2,
+      "pin_geometry": [
+        {
+          "base": [
+            -18,
+            0,
+            20
+          ],
+          "moving_child": [
+            -8,
+            0,
+            -4
+          ]
+        },
+        {
+          "base": [
+            -15,
+            0,
+            17
+          ],
+          "moving_child": [
+            -6,
+            0,
+            -3
+          ]
+        },
+        {
+          "base": [
+            -12,
+            0,
+            14
+          ],
+          "moving_child": [
+            -5,
+            0,
+            -2
+          ]
+        }
+      ],
+      "pressure_review_ceiling_MPa": 8,
+      "default_contact_load_N": 20,
+      "return_torque_Nm": ".035 + .00006 * angle_degrees",
+      "proposed_remote_source": "one motor/screw/master-cylinder displacement channel per hydraulic axis; actual source unconfirmed",
+      "master_bore_mm": 10,
+      "line_ID_OD_mm": [
+        1.5,
+        3
+      ],
+      "line_length_m": 1,
+      "viscosity_Pa_s": 0.03,
+      "effective_bulk_MPa": 800,
+      "screw_lead_mm": 1,
+      "mass_allocation_g": 500,
+      "seal_piston_guide_reserved_stack_mm": 6
+    },
+    "base_cameras": {
+      "observations": "two visible front-corner windows on differing exterior mounting facets; official photo and 60.4 s frame",
+      "yaw_deg_each": 25,
+      "down_deg": 0,
+      "angle_status": "candidate values; outward-facing mounting interpretation, no calibrated extrinsic measurement",
+      "center_height_mm": 150,
+      "center_from_front_inset_mm": 20,
+      "center_lateral_mm_each": 130,
+      "hfov_vfov_deg": [
+        100,
+        60
+      ],
+      "far_optical_depth_mm": 1500,
+      "window_clear_wh_mm": [
+        116,
+        52
+      ],
+      "recess_mm": 6,
+      "base_plate_xyz_mm": [
+        64,
+        114,
+        4
+      ],
+      "pitch_pin_diameter_mm": 8,
+      "pitch_slot_radius_mm": 24,
+      "frame_fasteners": "4 x M4 per bracket, proposed",
+      "cable_loop_radius_mm": 25,
+      "alignment_goal_deg": 0.5,
+      "mapping_to_mobile_stereo": "unconfirmed; visible windows are not counted as two stereo systems",
+      "calculation": "pinhole plane clipping to flat ground, centerline sampled every 25 mm; no occlusion or stereo matching",
+      "packaging_note": "previous inset35/spacing160 conflicts with proposed caster envelopes; revised inset20/spacing130 is an unmeasured packaging proposal",
+      "packaging_method": "3D OBB separating-axis checks for camera body/plate/ears against fixed caster guide, coil/cap and top-flange bounding reservations; at least3mm separating-axis gap; no suspension travel or full assembly sweep",
+      "frame_adapter_xyz_mm": [
+        64,
+        114,
+        12
+      ],
+      "height_revision": "raised from135 to150 as candidate packaging change for35mm suspension travel; not a measured manufacturer position"
+    },
+    "vertical_suspension_review": {
+      "topology": "independent equivalent supports; unconfirmed rigid bogie disabled in this mode",
+      "model": "3DOF small-angle rigid body-plane equilibrium; unilateral spring/tire series supports and travel stops",
+      "candidate_spring": {
+        "wire_mm": 4.5,
+        "mean_diameter_mm": 42,
+        "active_turns": 5.5,
+        "total_turns_assumed": 7.5,
+        "free_length_mm": 85,
+        "G_N_mm2": 79000,
+        "preload_N": 60,
+        "stroke_mm": 35,
+        "free_extension_trim_mm": 14
+      },
+      "tire_K_N_mm": {
+        "drive": 350,
+        "front": 180,
+        "rear": 250
+      },
+      "default_ground_mm": [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      "default_swivel_deg": [
+        0,
+        0,
+        180
+      ],
+      "trail_front_rear_mm": [
+        20,
+        16
+      ],
+      "ax_m_s2": 0,
+      "friction_assumed": 0.55,
+      "comparison": "25mm stroke/75mm spring at15mm left-front rise gives bump stop and left-drive contact loss;35mm/85mm candidate keeps five positive normal forces in this model",
+      "camera_check": "continuous full-stroke/full-yaw conservative box envelope, not exact closest distance or confirmed collision",
+      "visualization": "chassis-fixed current-load flat reference; main3D shows relative suspension movement; diagram shows amplified body displacement",
+      "not_validated": [
+        "actual bogie topology",
+        "spring allowable stress and fatigue",
+        "tire stiffness and friction",
+        "damping/impact/transient dynamics",
+        "CG change caused by body tilt",
+        "full assembly collision or braking safety"
+      ]
+    }
+  },
+  "analysis_limits": [
+    "waist/arm gravity only; suspension review separately adds quasi-static equivalent acceleration load transfer, with no transient dynamics",
+    "ground support hull is geometric and uses nominal caster heading",
+    "five-wheel sagittal reaction model assumes symmetry and an ideal bogie",
+    "no exhaustive self-collision, FEA, fatigue, tolerance or functional-safety validation",
+    "current extra DoF relative to historical 63-DoF specification not assigned to an invented axis",
+    "only gravity arm loads; no dynamics, friction, motor thermal or backdrive model",
+    "user assumes left/right payload share; no rigid carried-object force closure solution",
+    "workspace samples do not certify a continuously reachable or collision-free working region",
+    "battery gaps are static bounding-box separations, not full tolerance/dynamic collision checks; removal assumes battery leaves the robot rather than being carried by its hand",
+    "hand analysis is static at a chosen fingertip-normal contact, without friction/contact distribution, finger inertia, fluid transients or entrained air",
+    "spring return assumes unloaded contact and a freely retreating master source; no power-loss/backdrive claim",
+    "500 g hand allocation is not CAD mass or measured hardware; no pressure-rating, seal-life, fatigue or full collision validation",
+    "camera geometry/FOV/extrinsics are candidate inputs; exterior mounting facets do not establish exact optical axis; ground projection excludes occlusion, lens distortion, depth accuracy and safety detection",
+    "independent vertical suspension model uses candidate compliance, stops and fixed CG projections; full-travel camera boxes are conservative geometric reservations"
+  ],
+  "rev_k": {
+    "date": "2026-10-30",
+    "belt": {
+      "observed": "two exposed toothed pulleys, rear toothed region and belt plane in annotated user photo",
+      "proposal": "single horizontal timing belt driving base yaw; input/idler assignments unconfirmed",
+      "pitch_mm": 5,
+      "pulley_teeth": [
+        36,
+        120,
+        36
+      ],
+      "width_mm": 15,
+      "belt_teeth_candidate": 178,
+      "topology": "J5 base yaw → J1/J2/J3 pitch → J4 roll; no added DoF",
+      "legacy_comparison": "upper J5 yaw retained with toggle",
+      "mount_revision": "initial 240x220 table overlaps bay at45deg; circular200 table and140mm U-yoke candidate",
+      "validation": "40 work-energy torque derivatives; 181 yaw samples versus battery OBB reservations; actual full assembly collision unverified"
+    },
+    "hand": {
+      "reference": "https://holiday-robotics.com/ko/blog/hands-we-left-behind",
+      "observed": "segmented white contact surface, dark paired cheeks, central coils and wrist tube bundle; generations may differ",
+      "official": "hydraulic flexion, spring return and palm electric abduction; cylinder for one finger joint shown",
+      "hypothesis": "14 hydraulic +6 electric per hand remains a candidate allocation",
+      "detail": "piston, rod, guide, sealing envelopes; double-shear3mm pin/bush; central coil envelope; contact pads",
+      "limits": "equivalent spring law is independent of drawn coil; seal grooves, materials, fatigue and actual circuit not selected"
+    }
+  }
+}

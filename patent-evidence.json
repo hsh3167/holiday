@@ -1,0 +1,37 @@
+{
+  "verified_on": "2026-10-29",
+  "timezone": "Asia/Seoul",
+  "source": "https://www.kipris.or.kr/khome/search/searchResult.do",
+  "method": "Direct browser inspection of KIPRIS domestic patent/utility-model search and each bibliographic detail panel",
+  "query": "홀리데이로보틱스",
+  "observed_result_count": 2,
+  "scope": "Observed default domestic search results, not an exhaustive inventory of unpublished or differently assigned applications",
+  "records": [
+    {
+      "title": "자기식 촉각 센서를 시뮬레이션하는 방법 및 장치",
+      "application_number": "10-2026-0049510",
+      "application_date": "2026-03-19",
+      "registration_number": "10-3036917",
+      "registration_date": "2026-10-19",
+      "publication_date": "2026-10-23",
+      "applicant": "주식회사 홀리데이로보틱스",
+      "final_owner": "주식회사 홀리데이로보틱스",
+      "inventors": ["이민지", "이정민"],
+      "status_observed": "등록",
+      "amr_relevance": "No direct evidence for wheel, caster, suspension, or base geometry"
+    },
+    {
+      "title": "유연체 시뮬레이션을 수행하는 방법 및 장치",
+      "application_number": "10-2026-0042625",
+      "application_date": "2026-03-10",
+      "registration_number": "10-3036916",
+      "registration_date": "2026-10-19",
+      "publication_date": "2026-10-22",
+      "applicant": "주식회사 홀리데이로보틱스",
+      "final_owner": "주식회사 홀리데이로보틱스",
+      "inventors": ["이정민"],
+      "status_observed": "등록",
+      "amr_relevance": "No direct evidence for wheel, caster, suspension, or base geometry"
+    }
+  ]
+}
