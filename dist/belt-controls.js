@@ -13,5 +13,5 @@
  for(const[id,key]of numeric)$(id).oninput=()=>{const el=$(id),v=+el.value;if(el.value!==''&&Number.isFinite(v)&&v>=+el.min&&v<=+el.max){beltDesign[key]=v;refresh();}};
  $('belt-yaw').oninput=()=>{mechanism.angles[4]=+$('belt-yaw').value;refresh();};
  $('belt-focus').onclick=()=>{mechanism.scope='base';partGroup='base';document.querySelectorAll('[data-group]').forEach(b=>b.classList.toggle('active',b.dataset.group==='base'));select('belt');setView('iso');zoom=1;draw();$('model').scrollIntoView({block:'center'});};
- window.renderBeltReview();select('belt');
+ window.renderBeltReview();select(rideDesign.bogie?'bogie':'belt');
 })();

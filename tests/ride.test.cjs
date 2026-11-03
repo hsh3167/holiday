@@ -3,6 +3,8 @@ const c=vm.createContext({Math,params:{W:600,L:650,D:200,T:490}});
 for(const f of['mechanism','camera-design','ride-design'])vm.runInContext(fs.readFileSync(`dist/${f}.js`,'utf8'),c);
 vm.runInContext('function massAnalysis(){return {total:135,cg:[-11.8,0,527.47]}}',c);
 const run=s=>vm.runInContext(s,c),json=s=>JSON.parse(run('JSON.stringify('+s+')')),near=(a,b,t=1e-6)=>assert.ok(Math.abs(a-b)<t,`${a} / ${b}`);
+// Preserve the former independent-support comparison regression.
+run('rideDefaults.bogie=false;rideDesign=freshRide()');
 // Direct force law, independent of branch enumeration.
 function force(d,w,k,preload,travel){if(d<=0)return 0;if(!w.front)return w.tire*d;const atRebound=preload/w.tire,atBump=travel+(preload+k*travel)/w.tire;if(d<atRebound)return d*w.tire;if(d>atBump)return(d-travel)*w.tire;return(d+preload/k)/(1/k+1/w.tire);}
 let solved=0,energyChecks=0;

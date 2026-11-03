@@ -1,6 +1,6 @@
 {
-  "revision": "I",
-  "review_date": "2026-10-29",
+  "revision": "L",
+  "review_date": "2026-11-04",
   "units": "mm, kg, degree, N*m",
   "scope": "five-wheel AMR, 5-DoF waist, torso, bilateral 7R arms, 2-DoF neck/head and candidate 20-axis hybrid hands; preliminary detailed geometry, kinematics and static waist/arm gravity loads, hand payload distribution and sampled kinematic workspace; hybrid hand candidate mechanisms and single-finger hydraulic/static design review",
   "sources": [
@@ -564,5 +564,26 @@
       "detail": "piston, rod, guide, sealing envelopes; double-shear3mm pin/bush; central coil envelope; contact pads",
       "limits": "equivalent spring law is independent of drawn coil; seal grooves, materials, fatigue and actual circuit not selected"
     }
+  },
+  "bogie_review": {
+    "evidence": "User interpretation of visible front-caster-to-wheel-motor link in provided internal photo; hidden pivot and entire coupling not confirmed",
+    "adopted_candidate": "Left and right rigid bogies: each motor housing, drive wheel and front caster share a Y-axis rotation; rear center caster remains on chassis",
+    "candidate_dimensions": {
+      "pivot_percent_of_drive_to_straight_caster_contact": 47,
+      "pivot_height_mm": 135,
+      "pin_diameter_mm": 20,
+      "bush_outer_diameter_mm": 50,
+      "paired_arm_thickness_mm": 9,
+      "motor_adapter_thickness_mm": 8
+    },
+    "spring_interface": "Articulated upper/lower coil-strut seats are reserved, not photo-confirmed; fixed caster prismatic guide removed in bogie mode to avoid overconstraint",
+    "analysis": "Five-coordinate first-order quasistatic equilibrium, unilateral tire contact, preloaded coil work and complementary rebound/bump stop reactions; links massless within unchanged total mass and CG budget",
+    "limits": [
+      "exact pivot geometry and left/right cross-coupling unknown",
+      "large-angle contact XY migration and separate unsprung masses omitted",
+      "rigid 3D rotations preserve link distances, but force model is first-order",
+      "camera bound covers rotating wheel/fork only; motor/link/coil/battery whole-robot sweep not qualified",
+      "no fatigue, bearing selection, drawing tolerances or real terrain performance validation"
+    ]
   }
 }
