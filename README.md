@@ -4,7 +4,13 @@
 
 **손 설계 정정:** 한 손의 14개 유압 굽힘축＋6개 전동축 배정과 관절별 실린더 개수·위치·치수는 설계 가정입니다. 사진에서 이 개수와 배치를 확인한 것이 아닙니다. 공식 자료는 유압 굽힘·스프링 복귀·모터 벌림 원리를 뒷받침하지만, 현재 모델의 전체 관절별 배치를 입증하지는 않습니다. 게시된 모델에는 아직 이 가정이 포함되어 있습니다.
 
-## 실행 방법
+## 바로 실행
+
+[**FRIDAY 시뮬레이션 열기**](https://hsh3167.github.io/holiday/)
+
+GitHub Pages에서 설치 없이 실행할 수 있습니다. `main` 브랜치의 루트에서 배포하며, 첫 화면이 `dist/`의 워크벤치로 연결됩니다.
+
+## 로컬 실행 방법
 
 저장소 폴더에서 `python -m http.server 8000 --directory dist` 실행 후 http://localhost:8000 을 엽니다. 설치나 빌드가 필요 없습니다. Node.js 사용 시 `node serve.cjs`도 가능합니다.
 
@@ -14,7 +20,7 @@
 - `RENDERING.md`: 렌더링 구조와 검증 한계
 - `tests/`: 계산·기구학·렌더링 검사
 
-기존 배포: https://friday-amr-lab.flowy-luck-1047.chatgpt.site/ (소유자 접근 설정 유지). 이 저장소의 GitHub Pages는 별도 설정이 필요합니다.
+기존 배포: https://friday-amr-lab.flowy-luck-1047.chatgpt.site/ (소유자 접근 설정 유지). GitHub Pages 실행 주소: https://hsh3167.github.io/holiday/
 
 공식 참고: https://holiday-robotics.com/product 및 https://holiday-robotics.com/ko/blog/hands-we-left-behind . 참고 이미지의 권리는 각 원저작자에게 있습니다. 별도의 이미지 재사용 라이선스를 부여하지 않습니다.
 
